@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webbnest</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000000;
+            font-family: Arial, sans-serif;
+        }
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .info-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 8px;
+            max-width: 300px;
+            z-index: 1000;
+        }
+        .company-description {
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .navigation-hint {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: white;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container"></div>
+    <div class="info-panel">
+        <h2>Webbnest Network</h2>
+        <div class="company-description">
+            Hover over a node to see company details
+        </div>
+    </div>
+    <div class="navigation-hint">
+        Drag to pan | Scroll to zoom
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.3.2/pixi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Hide navigation hint after 5 seconds
+        setTimeout(() => {
+            document.querySelector('.navigation-hint').classList.add('fade-out');
+        }, 5000);
+    </script>
+    <!-- SVG Definitions for insect patterns -->
+    <svg width="0" height="0">
+        <defs>
+            <!-- Wing pattern -->
+            <pattern id="wingPattern" patternUnits="userSpaceOnUse" width="10" height="10">
+                <path d="M0 10L10 0M0 0L10 10" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+            </pattern>
+            <!-- Body pattern -->
+            <pattern id="bodyPattern" patternUnits="userSpaceOnUse" width="20" height="20">
+                <circle cx="10" cy="10" r="8" fill="none" stroke="rgba(255,255,255,0.2)"/>
+                <circle cx="10" cy="10" r="4" fill="none" stroke="rgba(255,255,255,0.15)"/>
+            </pattern>
+        </defs>
+    </svg>
+</body>
+</html>
